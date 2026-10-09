@@ -17,7 +17,7 @@
                 "tags": [
                     "Authentication"
                 ],
-                "summary": "Créer un compte utilisateur ggg",
+                "summary": "Créer un compte utilisateur ",
                 "operationId": "register",
                 "requestBody": {
                     "required": true,
