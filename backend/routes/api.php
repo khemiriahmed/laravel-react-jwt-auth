@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\Api\AuthController;
@@ -11,4 +10,12 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/me', [AuthController::class, 'me']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
+
+    Route::middleware('admin')->prefix('admin')->group(function () {
+        Route::get('/dashboard', function () {
+            return response()->json([
+                'message' => 'Bienvenue dans le tableau de bord administrateur.',
+            ]);
+        });
+    });
 });
