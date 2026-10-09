@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: laravel-react-jwt-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: laravel_react_jwt
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: dev_password_change_me
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U app_user -d laravel_react_jwt"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:
